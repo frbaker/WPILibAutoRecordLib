@@ -1,0 +1,4 @@
+See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibLinuxathenaReleaseSharedLibrary/output.txt for all output for linkAutoRecordLibLinuxathenaReleaseSharedLibrary.
+linking libautoRecordLib.so successful.
+
+Finished linkAutoRecordLibLinuxathenaReleaseSharedLibrary, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibLinuxathenaReleaseSharedLibrary/output.txt.

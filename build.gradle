@@ -1,0 +1,84 @@
+plugins {
+    id "cpp"
+    id "edu.wpi.first.GradleRIO" version "2026.2.1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+// 1. Define your component using the Software Model exactly as before
+model {
+    components {
+        autoRecordLib(NativeLibrarySpec) {
+            sources.cpp {
+                source {
+                    srcDir 'src/main/native/cpp'
+                    include '**/*.cpp'
+                }
+                exportedHeaders {
+                    srcDir 'src/main/native/include'
+                }
+            }
+
+            targetPlatform wpi.platforms.roborio
+            targetPlatform wpi.platforms.desktop
+
+            wpi.cpp.deps.wpilib(it)
+        }
+    }
+}
+
+// 2. Add standard Maven Publishing Plugin
+apply plugin: 'maven-publish'
+
+// 3. Simple Header Packager 
+task cppHeadersZip(type: Zip) {
+    archiveBaseName = 'autoRecordLib'
+    archiveClassifier = 'headers'
+    destinationDirectory = file("${buildDir}/distributions")
+    from 'src/main/native/include'
+}
+
+// 4. Safe Publishing Declaration
+publishing {
+    publications {
+        cpp(MavenPublication) {
+            groupId = 'com.team3267'
+            artifactId = 'autoRecordLib'
+            version = '1.0.0'
+
+            // Add the public headers zip to the maven artifact set
+            artifact cppHeadersZip
+        }
+    }
+    
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir("outputs/maven")
+        }
+    }
+}
+
+// 5. THE PERMANENT FIX: Defer artifact gathering until Gradle has fully resolved the C++ model
+project.afterEvaluate {
+    // Dynamically find all compiled library files inside the build directory
+    def libsFolder = file("${buildDir}/libs/autoRecordLib")
+    if (libsFolder.exists()) {
+        libsFolder.eachFileRecurse { file ->
+            // Only capture optimized Release binaries, ignoring intermediate build files
+            if (file.isFile() && file.path.contains("release")) {
+                def pathParts = file.path.replace('\\', '/').split('/')
+                // Determine the platform name (e.g., linuxathena, windowsx86-64) from the directory path
+                def platform = pathParts[pathParts.length - 3] 
+                def ext = file.name.tokenize('.').last()
+
+                // Append the built binary directly into your publication artifacts array
+                publishing.publications.cpp.artifact(file) {
+                    classifier = platform
+                    extension = ext
+                }
+            }
+        }
+    }
+}

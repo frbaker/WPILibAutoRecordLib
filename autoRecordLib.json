@@ -1,0 +1,23 @@
+{
+  "fileName": "autoRecordLib.json",
+  "name": "autoRecordLib",
+  "version": "1.0.0",
+  "frcYear": "2026",
+  "uuid": "23394170-6c3e-4a01-ae75-cb4f88cd0056",
+  "mavenUrls": [
+    "https://githubusercontent.com"
+  ],
+  "jsonUrl": "https://githubusercontent.com",
+  "cppDependencies": [
+    {
+      "groupId": "com.team3267",
+      "artifactId": "autoRecordLib",
+      "version": "1.0.0",
+      "libName": "autoRecordLib",
+      "headerClassifier": "headers",
+      "sharedLibrary": true,
+      "skipLocalFolder": false
+    }
+  ],
+  "javaDependencies": []
+}

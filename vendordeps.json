@@ -1,0 +1,22 @@
+{
+    "fileName": "autoRecordLib.json",
+    "name": "autoRecordLib",
+    "version": "1.0.0",
+    "uuid": "12345678-1234-1234-1234-123456789012",
+    "mavenUrls": ["https://github.com/frbaker/autoRecordLib/releases/download/v1.0.0"],
+    "jsonUrl": "https://raw.githubusercontent.com/frbaker/autoRecordLib/main/vendordeps.json",
+    "javaDependencies": [],
+    "cppDependencies": [
+        {
+            "groupId": "com.example",
+            "artifactId": "autoRecordLib",
+            "version": "1.0.0",
+            "libName": "autoRecordLib",
+            "headerClassifier": "headers",
+            "sourcesClassifier": "sources",
+            "sharedLibrary": false,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": ["linuxx86-64", "windowsx86-64", "linuxathena"]
+        }
+    ]
+}
