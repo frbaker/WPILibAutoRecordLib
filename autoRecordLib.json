@@ -17,7 +17,7 @@
       "libName": "autoRecordLib",
       "headerClassifier": "headers",
       "sharedLibrary": true,
-      "skipLocalFolder": false
+      "skipLocalFolder": true
     }
   ],
   "javaDependencies": []
