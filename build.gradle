@@ -1,13 +1,13 @@
 plugins {
     id "cpp"
     id "edu.wpi.first.GradleRIO" version "2026.2.1"
+    id "maven-publish"
 }
 
 repositories {
     mavenCentral()
 }
 
-// 1. Define your component using the Software Model exactly as before
 model {
     components {
         autoRecordLib(NativeLibrarySpec) {
@@ -16,69 +16,139 @@ model {
                     srcDir 'src/main/native/cpp'
                     include '**/*.cpp'
                 }
+
                 exportedHeaders {
                     srcDir 'src/main/native/include'
                 }
             }
 
+            // Build for RoboRIO and desktop/simulation
             targetPlatform wpi.platforms.roborio
             targetPlatform wpi.platforms.desktop
 
+            // Link against WPILib
             wpi.cpp.deps.wpilib(it)
         }
     }
 }
 
-// 2. Add standard Maven Publishing Plugin
-apply plugin: 'maven-publish'
 
-// 3. Simple Header Packager 
-task cppHeadersZip(type: Zip) {
-    archiveBaseName = 'autoRecordLib'
-    archiveClassifier = 'headers'
+/*
+ * ============================================================
+ * Header ZIP
+ * ============================================================
+ */
+
+tasks.register("cppHeadersZip", Zip) {
+    archiveBaseName = "autoRecordLib"
+    archiveVersion = "1.0.0"
+    archiveClassifier = "headers"
+
     destinationDirectory = file("${buildDir}/distributions")
-    from 'src/main/native/include'
+
+    from("src/main/native/include")
 }
 
-// 4. Safe Publishing Declaration
+
+/*
+ * ============================================================
+ * RoboRIO shared library ZIPs
+ * ============================================================
+ *
+ * GradleRIO expects these Maven artifacts:
+ *
+ *   autoRecordLib-1.0.0-linuxathena.zip
+ *   autoRecordLib-1.0.0-linuxathenadebug.zip
+ *
+ * The native model produces the actual libraries under:
+ *
+ *   build/libs/autoRecordLib/shared/linuxathena/release/
+ *   build/libs/autoRecordLib/shared/linuxathena/debug/
+ *
+ */
+
+
+/*
+ * RoboRIO Release
+ */
+tasks.register("cppLinuxathenaReleaseZip", Zip) {
+    archiveBaseName = "autoRecordLib"
+    archiveVersion = "1.0.0"
+    archiveClassifier = "linuxathena"
+
+    destinationDirectory = file("${buildDir}/distributions")
+
+    dependsOn "assembleAutoRecordLibSharedLinuxathenaRelease"
+
+    from("${buildDir}/libs/autoRecordLib/shared/linuxathena/release")
+}
+
+
+/*
+ * RoboRIO Debug
+ */
+tasks.register("cppLinuxathenaDebugZip", Zip) {
+    archiveBaseName = "autoRecordLib"
+    archiveVersion = "1.0.0"
+    archiveClassifier = "linuxathenadebug"
+
+    destinationDirectory = file("${buildDir}/distributions")
+
+    dependsOn "assembleAutoRecordLibSharedLinuxathenaDebug"
+
+    from("${buildDir}/libs/autoRecordLib/shared/linuxathena/debug")
+}
+
+
+/*
+ * ============================================================
+ * Maven Publishing
+ * ============================================================
+ */
+
 publishing {
     publications {
         cpp(MavenPublication) {
-            groupId = 'com.team3267'
-            artifactId = 'autoRecordLib'
-            version = '1.0.0'
+            groupId = "com.team3267"
+            artifactId = "autoRecordLib"
+            version = "1.0.0"
 
-            // Add the public headers zip to the maven artifact set
-            artifact cppHeadersZip
+            // Public C++ headers
+            artifact tasks.named("cppHeadersZip")
+
+            // RoboRIO shared library
+            artifact tasks.named("cppLinuxathenaReleaseZip")
+
+            // RoboRIO shared library - debug
+            artifact tasks.named("cppLinuxathenaDebugZip")
         }
     }
-    
+
+    /*
+     * Local Maven repository used by the publishing task.
+     *
+     * The contents of this directory can then be copied/pushed
+     * to the "maven" branch of the GitHub repository.
+     */
     repositories {
         maven {
+            name = "localMaven"
             url = layout.buildDirectory.dir("outputs/maven")
         }
     }
 }
 
-// 5. THE PERMANENT FIX: Defer artifact gathering until Gradle has fully resolved the C++ model
-project.afterEvaluate {
-    // Dynamically find all compiled library files inside the build directory
-    def libsFolder = file("${buildDir}/libs/autoRecordLib")
-    if (libsFolder.exists()) {
-        libsFolder.eachFileRecurse { file ->
-            // Only capture optimized Release binaries, ignoring intermediate build files
-            if (file.isFile() && file.path.contains("release")) {
-                def pathParts = file.path.replace('\\', '/').split('/')
-                // Determine the platform name (e.g., linuxathena, windowsx86-64) from the directory path
-                def platform = pathParts[pathParts.length - 3] 
-                def ext = file.name.tokenize('.').last()
 
-                // Append the built binary directly into your publication artifacts array
-                publishing.publications.cpp.artifact(file) {
-                    classifier = platform
-                    extension = ext
-                }
-            }
-        }
-    }
+/*
+ * ============================================================
+ * Publishing dependencies
+ * ============================================================
+ */
+
+tasks.named("publishCppPublicationToLocalMavenRepository") {
+    dependsOn(
+        "cppHeadersZip",
+        "cppLinuxathenaReleaseZip",
+        "cppLinuxathenaDebugZip"
+    )
 }
