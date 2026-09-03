@@ -5,9 +5,10 @@
   "frcYear": "2026",
   "uuid": "23394170-6c3e-4a01-ae75-cb4f88cd0056",
   "mavenUrls": [
-    "https://githubusercontent.com"
+    "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/maven"
   ],
-  "jsonUrl": "https://githubusercontent.com",
+  "jsonUrl": "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/main/autoRecordLib.json",
+  "jniDependencies": [],
   "cppDependencies": [
     {
       "groupId": "com.team3267",
