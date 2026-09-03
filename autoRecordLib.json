@@ -8,6 +8,7 @@
     "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/maven"
   ],
   "jsonUrl": "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/main/autoRecordLib.json",
+  "jniDependencies": [],
   "cppDependencies": [
     {
       "groupId": "com.team3267",
