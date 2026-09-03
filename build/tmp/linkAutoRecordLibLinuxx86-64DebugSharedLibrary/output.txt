@@ -1,0 +1,4 @@
+See file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibLinuxx86-64DebugSharedLibrary/output.txt for all output for linkAutoRecordLibLinuxx86-64DebugSharedLibrary.
+linking libautoRecordLib.so successful.
+
+Finished linkAutoRecordLibLinuxx86-64DebugSharedLibrary, see full log file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibLinuxx86-64DebugSharedLibrary/output.txt.

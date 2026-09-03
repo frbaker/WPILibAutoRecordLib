@@ -78,7 +78,7 @@ tasks.register("cppLinuxathenaReleaseZip", Zip) {
 
     destinationDirectory = file("${buildDir}/distributions")
 
-    dependsOn "assembleAutoRecordLibSharedLinuxathenaRelease"
+    dependsOn "autoRecordLibLinuxathenaReleaseSharedLibrary"
 
     from("${buildDir}/libs/autoRecordLib/shared/linuxathena/release")
 }
@@ -94,7 +94,7 @@ tasks.register("cppLinuxathenaDebugZip", Zip) {
 
     destinationDirectory = file("${buildDir}/distributions")
 
-    dependsOn "assembleAutoRecordLibSharedLinuxathenaDebug"
+    dependsOn "autoRecordLibLinuxathenaDebugSharedLibrary"
 
     from("${buildDir}/libs/autoRecordLib/shared/linuxathena/debug")
 }

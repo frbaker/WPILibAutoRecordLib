@@ -1,4 +1,0 @@
-See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibDebugSharedLibraryAutoRecordLibCpp/output.txt for all output for compileAutoRecordLibDebugSharedLibraryAutoRecordLibCpp.
-compiling RoutineHandler.cpp successful.
-
-Finished compileAutoRecordLibDebugSharedLibraryAutoRecordLibCpp, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibDebugSharedLibraryAutoRecordLibCpp/output.txt.

@@ -1,0 +1,4 @@
+See file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxx86-64ReleaseStaticLibrary/output.txt for all output for createAutoRecordLibLinuxx86-64ReleaseStaticLibrary.
+archiving libautoRecordLib.a successful.
+
+Finished createAutoRecordLibLinuxx86-64ReleaseStaticLibrary, see full log file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxx86-64ReleaseStaticLibrary/output.txt.

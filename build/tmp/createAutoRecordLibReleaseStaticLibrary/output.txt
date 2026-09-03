@@ -1,4 +1,0 @@
-See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibReleaseStaticLibrary/output.txt for all output for createAutoRecordLibReleaseStaticLibrary.
-archiving libautoRecordLib.a successful.
-
-Finished createAutoRecordLibReleaseStaticLibrary, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibReleaseStaticLibrary/output.txt.

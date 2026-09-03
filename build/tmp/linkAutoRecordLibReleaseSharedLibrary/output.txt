@@ -1,4 +1,0 @@
-See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibReleaseSharedLibrary/output.txt for all output for linkAutoRecordLibReleaseSharedLibrary.
-linking libautoRecordLib.so successful.
-
-Finished linkAutoRecordLibReleaseSharedLibrary, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/linkAutoRecordLibReleaseSharedLibrary/output.txt.
