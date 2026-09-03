@@ -7,7 +7,7 @@
   "mavenUrls": [
     "https://githubusercontent.com"
   ],
-  "jsonUrl": "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/refs/heads/main/autoRecordLib.json",
+  "jsonUrl": "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/main/autoRecordLib.json",
   "cppDependencies": [
     {
       "groupId": "com.team3267",
