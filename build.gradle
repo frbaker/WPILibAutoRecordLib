@@ -4,7 +4,7 @@ plugins {
     id "maven-publish"
 }
 group = 'com.team3267'
-version = '1.0.1'
+version = '1.0.2'
 
 repositories {
     mavenCentral()
@@ -44,7 +44,7 @@ model {
 
 tasks.register("cppHeadersZip", Zip) {
     archiveBaseName = "autoRecordLib"
-    archiveVersion = "1.0.0"
+    archiveVersion = project.version
     archiveClassifier = "headers"
 
     destinationDirectory = file("${buildDir}/distributions")
@@ -76,7 +76,7 @@ tasks.register("cppHeadersZip", Zip) {
  */
 tasks.register("cppLinuxathenaReleaseZip", Zip) {
     archiveBaseName = "autoRecordLib"
-    archiveVersion = "1.0.0"
+    archiveVersion = project.version
     archiveClassifier = "linuxathena"
 
     destinationDirectory = file("${buildDir}/distributions")
@@ -92,7 +92,7 @@ tasks.register("cppLinuxathenaReleaseZip", Zip) {
  */
 tasks.register("cppLinuxathenaDebugZip", Zip) {
     archiveBaseName = "autoRecordLib"
-    archiveVersion = "1.0.0"
+    archiveVersion = project.version
     archiveClassifier = "linuxathenadebug"
 
     destinationDirectory = file("${buildDir}/distributions")
@@ -114,7 +114,7 @@ publishing {
         cpp(MavenPublication) {
             groupId = "com.team3267"
             artifactId = "autoRecordLib"
-            version = "1.0.0"
+            version = project.version
 
             // Public C++ headers
             artifact tasks.named("cppHeadersZip")
