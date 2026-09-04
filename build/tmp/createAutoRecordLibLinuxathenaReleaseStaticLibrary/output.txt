@@ -1,4 +1,4 @@
-See file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxathenaReleaseStaticLibrary/output.txt for all output for createAutoRecordLibLinuxathenaReleaseStaticLibrary.
+See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxathenaReleaseStaticLibrary/output.txt for all output for createAutoRecordLibLinuxathenaReleaseStaticLibrary.
 archiving libautoRecordLib.a successful.
 
-Finished createAutoRecordLibLinuxathenaReleaseStaticLibrary, see full log file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxathenaReleaseStaticLibrary/output.txt.
+Finished createAutoRecordLibLinuxathenaReleaseStaticLibrary, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/createAutoRecordLibLinuxathenaReleaseStaticLibrary/output.txt.

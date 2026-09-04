@@ -1,4 +1,6 @@
-See file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp/output.txt for all output for compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp.
+See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp/output.txt for all output for compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp.
+compiling AutonomousRecorder.cpp successful.
+
 compiling RoutineHandler.cpp successful.
 
-Finished compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp, see full log file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp/output.txt.
+Finished compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaDebugStaticLibraryAutoRecordLibCpp/output.txt.
