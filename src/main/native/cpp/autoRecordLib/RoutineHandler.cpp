@@ -1,9 +1,10 @@
 #include "autoRecordLib/RoutineHandler.h"
 #include <iostream>
+#include <autoRecordLib/AutonomousRecorder.h>
 
 namespace autoRecordLib{
 
-void RoutineHandler::writeRoutineToDisk(std::vector<ControllerSnapshot>& snapshots){
+void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
   std::filesystem::create_directories("/home/lvuser/controllerRecordings");
 
   auto now = std::chrono::system_clock::now();
@@ -19,7 +20,7 @@ void RoutineHandler::writeRoutineToDisk(std::vector<ControllerSnapshot>& snapsho
   file.close();
 }
 
-std::vector<ControllerSnapshot> RoutineHandler::getRoutineFromDisk(std::string path){
+std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path){
     std::vector<ControllerSnapshot> snapshots;
     std::ifstream file(path);
 
@@ -59,5 +60,9 @@ std::vector<ControllerSnapshot> RoutineHandler::getRoutineFromDisk(std::string p
     
     file.close();
     return snapshots;
+}
+
+void writeRoutineToDisk(AutonomousRecorder recorder){
+    writeRoutineToDisk(recorder.GetRoutine());
 }
 }

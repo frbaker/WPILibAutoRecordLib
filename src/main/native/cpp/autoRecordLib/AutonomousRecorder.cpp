@@ -15,4 +15,8 @@ void AutonomousRecorder::ClearSnapshots(){
     snapshots.clear();
 }
 
+std::vector<ControllerSnapshot> AutonomousRecorder::GetRoutine(){
+    return snapshots;
+}
+
 }

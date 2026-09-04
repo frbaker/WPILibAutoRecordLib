@@ -2,12 +2,11 @@
 #include <fstream>
 #include <filesystem>
 #include <vector>
-#include "ControllerSnapshot.h"
 #include <fmt/format.h>
+#include <autoRecordLib/ControllerSnapshot.h>
+#include <autoRecordLib/AutonomousRecorder.h>
 namespace autoRecordLib{
-class RoutineHandler{
-    public:
-    void writeRoutineToDisk(std::vector<ControllerSnapshot>& snapshots);
-    std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path);
-};
+void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
+std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path);
+void writeRoutineToDisk(AutonomousRecorder& recorder);
 }

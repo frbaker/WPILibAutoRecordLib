@@ -9,6 +9,7 @@ namespace autoRecordLib{
 
         void RecordSnapshot(ControllerSnapshot snapshot);
         void ClearSnapshots();
+        std::vector<ControllerSnapshot> GetRoutine();
 
         private:
         std::vector<ControllerSnapshot> snapshots;
