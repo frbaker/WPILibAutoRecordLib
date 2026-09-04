@@ -3,6 +3,8 @@ plugins {
     id "edu.wpi.first.GradleRIO" version "2026.2.1"
     id "maven-publish"
 }
+group = 'com.team3267'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
