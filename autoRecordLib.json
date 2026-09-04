@@ -5,7 +5,7 @@
     "frcYear": "2026",
     "uuid": "23394170-6c3e-4a01-ae75-cb4f88cd0056",
     "mavenUrls": [
-        "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/maven/"
+        "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/main/build/outputs/maven"
     ],
     "jsonUrl": "https://raw.githubusercontent.com/frbaker/WPILibAutoRecordLib/main/autoRecordLib.json",
     "jniDependencies": [],
