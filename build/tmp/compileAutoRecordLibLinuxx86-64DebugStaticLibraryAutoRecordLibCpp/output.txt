@@ -1,4 +1,0 @@
-See file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxx86-64DebugStaticLibraryAutoRecordLibCpp/output.txt for all output for compileAutoRecordLibLinuxx86-64DebugStaticLibraryAutoRecordLibCpp.
-compiling RoutineHandler.cpp successful.
-
-Finished compileAutoRecordLibLinuxx86-64DebugStaticLibraryAutoRecordLibCpp, see full log file:///mnt/c/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxx86-64DebugStaticLibraryAutoRecordLibCpp/output.txt.

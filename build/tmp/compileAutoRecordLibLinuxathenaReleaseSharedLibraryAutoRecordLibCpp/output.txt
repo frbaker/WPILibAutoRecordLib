@@ -1,4 +1,6 @@
 See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaReleaseSharedLibraryAutoRecordLibCpp/output.txt for all output for compileAutoRecordLibLinuxathenaReleaseSharedLibraryAutoRecordLibCpp.
+compiling AutonomousRecorder.cpp successful.
+
 compiling RoutineHandler.cpp successful.
 
 Finished compileAutoRecordLibLinuxathenaReleaseSharedLibraryAutoRecordLibCpp, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaReleaseSharedLibraryAutoRecordLibCpp/output.txt.

@@ -6,7 +6,7 @@
 #include <autoRecordLib/ControllerSnapshot.h>
 #include <autoRecordLib/AutonomousRecorder.h>
 namespace autoRecordLib{
-void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
-std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path);
-void writeRoutineToDisk(AutonomousRecorder recorder);
+    void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
+    std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path);
+    void writeRoutineToDisk(AutonomousRecorder recorder);
 }
