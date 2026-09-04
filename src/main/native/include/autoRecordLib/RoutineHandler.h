@@ -8,5 +8,5 @@
 namespace autoRecordLib{
 void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
 std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path);
-void writeRoutineToDisk(AutonomousRecorder& recorder);
+void writeRoutineToDisk(AutonomousRecorder recorder);
 }
