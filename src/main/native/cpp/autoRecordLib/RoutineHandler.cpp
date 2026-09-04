@@ -1,6 +1,14 @@
 #include "autoRecordLib/RoutineHandler.h"
 #include <iostream>
 #include <autoRecordLib/AutonomousRecorder.h>
+#include <frc2/command/Commands.h>
+#include <frc2/command/InstantCommand.h>
+#include <autoRecordLib/ControllerSnapshot.h>
+
+namespace{
+    std::function<void(const autoRecordLib::ControllerSnapshot&)> localPlaybackAction = nullptr;
+    static bool commandsRegistered;
+}
 
 namespace autoRecordLib{
 
@@ -54,8 +62,6 @@ std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path){
             std::cout << "Error parsing line: " << line << " - " << e.what() << std::endl;
             continue;
         }
-        
-        snapshots.push_back(snapshot);
     }
     
     file.close();
@@ -64,5 +70,38 @@ std::vector<ControllerSnapshot> getRoutineFromDisk(std::string path){
 
 void writeRoutineToDisk(AutonomousRecorder recorder){
     writeRoutineToDisk(recorder.GetRoutine());
+}
+
+frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots){
+    //return frc2::cmd::Sequence(std::move(commands));
+    auto state = std::make_shared<size_t>(0);
+    return frc2::FunctionalCommand(
+        []{},
+        [state, snapshots]{
+            if (*state < snapshots.size()) {
+                const auto& snapshot = snapshots[*state];
+
+                if(localPlaybackAction != nullptr){
+                    localPlaybackAction(snapshot);
+                }
+
+                (*state)++;
+            }
+        },
+        [](bool interrupted){
+            //Maybe add ability to register onDone auto commands but i dont know if thats necessary
+        },
+        [state, snapshots] { // IsFinished
+                return *state >= snapshots.size();
+        }
+    ).ToPtr();
+    return frc2::InstantCommand([]{}).ToPtr();
+}
+void RegisterAutoCommands(std::function<void(const ControllerSnapshot&)> playbackAction){
+    if(commandsRegistered){
+        return;
+    }
+    commandsRegistered = true;
+    localPlaybackAction = playbackAction;
 }
 }

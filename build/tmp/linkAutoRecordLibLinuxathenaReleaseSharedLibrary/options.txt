@@ -34,6 +34,7 @@ C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\0c74d7f3e1a0dec233fffd0d650
 C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\0c74d7f3e1a0dec233fffd0d650ad65e\\transformed\\opencv-cpp-4.10.0-3-linuxathena\\linux\\athena\\shared\\libopencv_stitching.so.4.10
 C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\0c74d7f3e1a0dec233fffd0d650ad65e\\transformed\\opencv-cpp-4.10.0-3-linuxathena\\linux\\athena\\shared\\libopencv_video.so.4.10
 C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\0c74d7f3e1a0dec233fffd0d650ad65e\\transformed\\opencv-cpp-4.10.0-3-linuxathena\\linux\\athena\\shared\\libopencv_videoio.so.4.10
+C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\b06a058ca1917628abbc0d96837e83b3\\transformed\\wpilibNewCommands-cpp-2026.2.1-linuxathena\\linux\\athena\\shared\\libwpilibNewCommands.so
 -rdynamic
 -pthread
 -ldl

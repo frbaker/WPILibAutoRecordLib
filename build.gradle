@@ -4,10 +4,13 @@ plugins {
     id "maven-publish"
 }
 group = 'com.team3267'
-version = '1.0.5'
+version = '1.1.0'
 
 repositories {
     mavenCentral()
+    maven{
+        url "https://wpi.edu"
+    }
 }
 
 model {
@@ -31,6 +34,7 @@ model {
 
             // Link against WPILib
             wpi.cpp.deps.wpilib(it)
+            wpi.cpp.vendor.cpp(it) //Includes vendor deps in this vendor dep
         }
     }
 }

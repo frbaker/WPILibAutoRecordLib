@@ -43,6 +43,8 @@ C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\a3084f8d29d976c3d0b77c4d365
 C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\552b5aea3ba337d53af36910ba53f45a\\transformed\\apriltag-cpp-2026.2.1-headers
 -I
 C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\5252a9a977bfef633505bccac41e905a\\transformed\\opencv-cpp-4.10.0-3-headers
+-I
+C:\\Users\\floyd\\.gradle\\caches\\8.11\\transforms\\12593babe36b5e58d2c307619be83ff6\\transformed\\wpilibNewCommands-cpp-2026.2.1-headers
 -isystem
 C:\\Users\\Public\\wpilib\\2026\\roborio\\arm-nilrt-linux-gnueabi\\sysroot\\usr\\lib\\gcc\\arm-nilrt-linux-gnueabi\\12\\include
 -isystem
