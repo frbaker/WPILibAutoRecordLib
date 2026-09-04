@@ -2,6 +2,6 @@
 #include <vector>
 namespace autoRecordLib{
 struct Routine{
-    std::vector<ControllerSnapshot.h> snapshots;
-}
+    std::vector<ControllerSnapshot> snapshots;
+};
 }
