@@ -103,6 +103,11 @@ frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& 
     ).ToPtr();
     return frc2::InstantCommand([]{}).ToPtr();
 }
+
+frc2::CommandPtr CreateAutonomousRoutine(const Routine& r){
+    return CreateAutonomousRoutine(r.snapshots);
+}
+
 void RegisterAutoCommands(std::function<void(const ControllerSnapshot&)> playbackAction){
     if(commandsRegistered){
         return;
