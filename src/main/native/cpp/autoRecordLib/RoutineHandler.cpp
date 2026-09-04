@@ -28,7 +28,7 @@ void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
   file.close();
 }
 
-std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string& path){
+std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string path){
     std::vector<ControllerSnapshot> snapshots;
     std::ifstream file(path);
 
@@ -68,7 +68,7 @@ std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string& path){
     return snapshots;
 }
 
-autoRecordLib::Routine getRoutineFromDisk(std::string& path){
+autoRecordLib::Routine getRoutineFromDisk(std::string path){
     Routine r;
     r.snapshots = getRoutineAsVectorFromDisk(path);
     return r;

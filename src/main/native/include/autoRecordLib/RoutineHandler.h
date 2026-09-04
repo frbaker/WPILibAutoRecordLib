@@ -10,8 +10,8 @@
 #include <functional>
 namespace autoRecordLib{
     void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
-    std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string& path);
-    autoRecordLib::Routine getRoutineFromDisk(std::string& path);
+    std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string path);
+    autoRecordLib::Routine getRoutineFromDisk(std::string path);
     void writeRoutineToDisk(AutonomousRecorder recorder);
     frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots);
     void RegisterAutoCommands(std::function<void(const ControllerSnapshot&)> playbackAction);
