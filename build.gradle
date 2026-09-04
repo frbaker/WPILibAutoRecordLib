@@ -19,6 +19,7 @@ model {
 
                 exportedHeaders {
                     srcDir 'src/main/native/include'
+                    include '**/*.h'
                 }
             }
 
