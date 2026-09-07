@@ -8,7 +8,7 @@ namespace autoRecordLib{
         public:
         AutonomousRecorder();
 
-        void RecordSnapshot(ControllerSnapshot snapshot);
+        void RecordSnapshot(ControllerSnapshot& snapshot);
         void RecordSnapshot(frc::XboxController& controller);
         void ClearSnapshots();
         std::vector<ControllerSnapshot> GetRoutine();
