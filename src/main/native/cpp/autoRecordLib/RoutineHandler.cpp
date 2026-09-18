@@ -7,6 +7,7 @@
 
 namespace{
     std::function<void(const autoRecordLib::ControllerSnapshot&)> localPlaybackAction = nullptr;
+    std::function<void()> localStartFunction = nullptr;
     static bool commandsRegistered;
 }
 
@@ -82,7 +83,7 @@ frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& 
     //return frc2::cmd::Sequence(std::move(commands));
     auto state = std::make_shared<size_t>(0);
     return frc2::FunctionalCommand(
-        []{},
+        []{localStartFunction();},
         [state, snapshots]{
             if (*state < snapshots.size()) {
                 const auto& snapshot = snapshots[*state];
@@ -108,11 +109,12 @@ frc2::CommandPtr CreateAutonomousRoutine(const Routine& r){
     return CreateAutonomousRoutine(r.snapshots);
 }
 
-void RegisterAutoCommands(std::function<void(const ControllerSnapshot&)> playbackAction){
+void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction){
     if(commandsRegistered){
         return;
     }
     commandsRegistered = true;
+    localStartFunction = startFunction;
     localPlaybackAction = playbackAction;
 }
 }
