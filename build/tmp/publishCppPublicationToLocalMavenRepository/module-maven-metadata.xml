@@ -3,11 +3,11 @@
   <groupId>com.team3267</groupId>
   <artifactId>autoRecordLib</artifactId>
   <versioning>
-    <latest>1.1.9</latest>
-    <release>1.1.9</release>
+    <latest>1.2.0</latest>
+    <release>1.2.0</release>
     <versions>
-      <version>1.1.9</version>
+      <version>1.2.0</version>
     </versions>
-    <lastUpdated>20261007013753</lastUpdated>
+    <lastUpdated>20261007014229</lastUpdated>
   </versioning>
 </metadata>

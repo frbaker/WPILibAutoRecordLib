@@ -15,5 +15,5 @@ namespace autoRecordLib{
     void writeRoutineToDisk(AutonomousRecorder recorder);
     frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots, frc2::Requirements requiredSubsystems);
     frc2::CommandPtr CreateAutonomousRoutine(const Routine& routine, frc2::Requirements requiredSubsystems);
-    void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction);
+    void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements requiredSubsystems);
 }
