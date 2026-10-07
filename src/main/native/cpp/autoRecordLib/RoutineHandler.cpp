@@ -79,7 +79,7 @@ void writeRoutineToDisk(AutonomousRecorder recorder){
     writeRoutineToDisk(recorder.GetRoutine());
 }
 
-frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots){
+frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots, frc2::Requirements requiredSubsystems){
     //return frc2::cmd::Sequence(std::move(commands));
     auto state = std::make_shared<size_t>(0);
     return frc2::FunctionalCommand(
@@ -100,13 +100,14 @@ frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& 
         },
         [state, snapshots] { // IsFinished
                 return *state >= snapshots.size();
-        }
+        },
+        requiredSubsystems
     ).ToPtr();
     return frc2::InstantCommand([]{}).ToPtr();
 }
 
-frc2::CommandPtr CreateAutonomousRoutine(const Routine& r){
-    return CreateAutonomousRoutine(r.snapshots);
+frc2::CommandPtr CreateAutonomousRoutine(const Routine& r, frc2::Requirements requiredSubsystems){
+    return CreateAutonomousRoutine(r.snapshots, requiredSubsystems);
 }
 
 void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction){
