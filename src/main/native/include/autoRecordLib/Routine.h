@@ -1,3 +1,4 @@
+#pragma once
 #include <autoRecordLib/ControllerSnapshot.h>
 #include <vector>
 namespace autoRecordLib{
