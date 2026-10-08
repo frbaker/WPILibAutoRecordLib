@@ -2,5 +2,9 @@ See file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAut
 compiling AutonomousRecorder.cpp successful.
 
 compiling RoutineHandler.cpp successful.
+C:\Users\floyd\Documents\2026Code\autoRecordLib\src\main\native\cpp\autoRecordLib\RoutineHandler.cpp: In function 'frc2::CommandPtr autoRecordLib::CreateAutonomousRoutine(const std::vector<ControllerSnapshot>&)':
+C:\Users\floyd\Documents\2026Code\autoRecordLib\src\main\native\cpp\autoRecordLib\RoutineHandler.cpp:87:10: warning: unused variable 'j' [-Wunused-variable]
+   87 |     int* j = &stat;
+      |          ^
 
 Finished compileAutoRecordLibLinuxathenaDebugSharedLibraryAutoRecordLibCpp, see full log file:///C:/Users/floyd/Documents/2026Code/autoRecordLib/build/tmp/compileAutoRecordLibLinuxathenaDebugSharedLibraryAutoRecordLibCpp/output.txt.

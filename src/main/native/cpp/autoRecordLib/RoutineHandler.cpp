@@ -76,13 +76,15 @@ autoRecordLib::Routine getRoutineFromDisk(std::string path){
     return r;
 }
 
-void writeRoutineToDisk(AutonomousRecorder recorder){
+void writeRoutineToDisk(AutonomousRecorder& recorder){
     writeRoutineToDisk(recorder.GetRoutine());
 }
 
 frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots){
     //return frc2::cmd::Sequence(std::move(commands));
     auto state = std::make_shared<size_t>(0);
+    int stat = 0;
+    int* j = &stat;
     return frc2::FunctionalCommand(
         []{localStartFunction();},
         [state, snapshots]{
@@ -111,12 +113,13 @@ frc2::CommandPtr CreateAutonomousRoutine(const Routine& r){
     return CreateAutonomousRoutine(r.snapshots);
 }
 
-void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements requiredSubsystems){
+void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements required){
     if(commandsRegistered){
         return;
     }
     commandsRegistered = true;
     localStartFunction = startFunction;
     localPlaybackAction = playbackAction;
+    requiredSubsystems = required;
 }
 }
