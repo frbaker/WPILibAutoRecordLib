@@ -114,9 +114,9 @@ frc2::CommandPtr CreateAutonomousRoutine(const Routine& r){
 }
 
 void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements required){
-    if(commandsRegistered){
-        return;
-    }
+    //if(commandsRegistered){
+    //    return;
+    //}
     commandsRegistered = true;
     localStartFunction = startFunction;
     localPlaybackAction = playbackAction;
