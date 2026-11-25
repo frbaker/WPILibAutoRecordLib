@@ -4,33 +4,38 @@
 #include <frc2/command/Commands.h>
 #include <frc2/command/InstantCommand.h>
 #include <autoRecordLib/ControllerSnapshot.h>
+#include <thread>
 
 namespace{
     std::function<void(const autoRecordLib::ControllerSnapshot&)> localPlaybackAction = nullptr;
     std::function<void()> localStartFunction = nullptr;
     frc2::Requirements requiredSubsystems;
-    static bool commandsRegistered;
+    bool commandsRegistered;
 }
 
 namespace autoRecordLib{
 
-void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
-  std::filesystem::create_directories("/home/lvuser/controllerRecordings");
-
-  auto now = std::chrono::system_clock::now();
-  auto time = std::chrono::system_clock::to_time_t(now);
-  auto tm = *std::localtime(&time);
-  char filename[80];
-  std::strftime(filename, sizeof(filename), "/home/lvuser/controllerRecordings/recording_%Y%m%d_%H%M%S.csv", &tm);
-
-  std::ofstream file(filename);
-  for (const auto& snapshot : snapshots){
-    file << snapshot.toString() << "\n";
-  }
-  file.close();
+void WriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
+    std::thread t = std::thread(ThreadedWriteRoutineToDisk, snapshots);
+    t.detach();
 }
 
-std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string path){
+void ThreadedWriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
+    std::filesystem::create_directories("/home/lvuser/controllerRecordings");
+
+    auto now = std::chrono::system_clock::now();
+    auto time = std::chrono::system_clock::to_time_t(now);
+    //auto tm = *std::localtime(&time); // Not thread safe
+    std::string filename = "/home/lvuser/controllerRecordings/recording_" + std::to_string(time) + ".csv";;
+
+    std::ofstream file(filename);
+    for (const auto& snapshot : snapshots){
+        file << snapshot.toString() << "\n";
+    }
+    file.close();
+}
+
+std::vector<ControllerSnapshot> GetRoutineAsVectorFromDisk(std::string path){
     std::vector<ControllerSnapshot> snapshots;
     std::ifstream file(path);
 
@@ -70,14 +75,14 @@ std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string path){
     return snapshots;
 }
 
-autoRecordLib::Routine getRoutineFromDisk(std::string path){
+autoRecordLib::Routine GetRoutineFromDisk(std::string path){
     Routine r;
-    r.snapshots = getRoutineAsVectorFromDisk(path);
+    r.snapshots = GetRoutineAsVectorFromDisk(path);
     return r;
 }
 
-void writeRoutineToDisk(AutonomousRecorder& recorder){
-    writeRoutineToDisk(recorder.GetRoutine());
+void WriteRoutineToDisk(AutonomousRecorder& recorder){
+    WriteRoutineToDisk(recorder.GetRoutine());
 }
 
 frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots){

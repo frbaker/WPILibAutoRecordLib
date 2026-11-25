@@ -9,10 +9,11 @@
 #include <frc2/command/CommandPtr.h>
 #include <functional>
 namespace autoRecordLib{
-    void writeRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
-    std::vector<ControllerSnapshot> getRoutineAsVectorFromDisk(std::string path);
-    autoRecordLib::Routine getRoutineFromDisk(std::string path);
-    void writeRoutineToDisk(AutonomousRecorder& recorder);
+    void WriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
+    void WriteRoutineToDisk(AutonomousRecorder& recorder);
+    void ThreadedWriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots);
+    std::vector<ControllerSnapshot> GetRoutineAsVectorFromDisk(std::string path);
+    autoRecordLib::Routine GetRoutineFromDisk(std::string path);
     frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots);
     frc2::CommandPtr CreateAutonomousRoutine(const Routine& routine);
     void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements required);
