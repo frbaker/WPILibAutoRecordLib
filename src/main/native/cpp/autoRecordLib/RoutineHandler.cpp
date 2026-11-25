@@ -11,6 +11,7 @@ namespace{
     std::function<void()> localStartFunction = nullptr;
     frc2::Requirements requiredSubsystems;
     bool commandsRegistered;
+    std::string saveLocation = "controllerRecordings";
 }
 
 namespace autoRecordLib{
@@ -21,12 +22,13 @@ void WriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
 }
 
 void ThreadedWriteRoutineToDisk(const std::vector<ControllerSnapshot>& snapshots){
-    std::filesystem::create_directories("/home/lvuser/controllerRecordings");
+    std::string directory = "/home/lvuser/" + saveLocation;
+    std::filesystem::create_directories(directory);
 
     auto now = std::chrono::system_clock::now();
     auto time = std::chrono::system_clock::to_time_t(now);
     //auto tm = *std::localtime(&time); // Not thread safe
-    std::string filename = "/home/lvuser/controllerRecordings/recording_" + std::to_string(time) + ".csv";;
+    std::string filename = directory + "/recording_" + std::to_string(time) + ".csv";
 
     std::ofstream file(filename);
     for (const auto& snapshot : snapshots){
@@ -130,4 +132,9 @@ void RegisterAutoCommands(std::function<void()> startFunction, std::function<voi
     localPlaybackAction = playbackAction;
     requiredSubsystems = required;
 }
+
+void SetSaveLocation(std::string location){
+    saveLocation = location;
+}
+
 }

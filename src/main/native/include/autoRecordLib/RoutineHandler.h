@@ -17,4 +17,5 @@ namespace autoRecordLib{
     frc2::CommandPtr CreateAutonomousRoutine(const std::vector<ControllerSnapshot>& snapshots);
     frc2::CommandPtr CreateAutonomousRoutine(const Routine& routine);
     void RegisterAutoCommands(std::function<void()> startFunction, std::function<void(const ControllerSnapshot&)> playbackAction, frc2::Requirements required);
+    void SetSaveLocation(std::string location);
 }
